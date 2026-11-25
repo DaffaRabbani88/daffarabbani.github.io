@@ -81,14 +81,13 @@ export default function Home() {
               Certifications
             </a>
           </nav>
-          <a
-            href="/CV-DaffaRabbani.pdf"
-            download
-            className="px-4 py-2 text-xs font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition flex items-center gap-2"
-          >
-            <Download className="w-3.5 h-3.5" />
-            Download CV
-          </a>
+         <a
+  href={withBasePath("/CV_DaffaRabbani.pdf")}
+  download="CV_DaffaRabbani.pdf"
+  className="..." // biarkan class Tailwind yang sudah ada tetap sama
+>
+  Download CV
+</a>
         </div>
       </header>
 
