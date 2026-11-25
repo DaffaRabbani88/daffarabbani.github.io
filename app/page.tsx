@@ -4,7 +4,6 @@ import { useState } from "react";
 import { portfolioData } from "../data/portfolio";
 import {
   Download,
-  Mail,
   ExternalLink,
   Award,
   Briefcase,
@@ -13,6 +12,11 @@ import {
   BookOpen,
   Cpu,
 } from "lucide-react";
+
+const withBasePath = (path: string) =>
+  path.startsWith("http")
+    ? path
+    : `/daffarabbani.github.io${path.startsWith("/") ? path : `/${path}`}`;
 
 const GithubIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -159,7 +163,7 @@ export default function Home() {
           <div className="shrink-0">
             <div className="relative w-52 h-52 sm:w-64 sm:h-64 rounded-2xl overflow-hidden border-2 border-indigo-500/40 shadow-xl shadow-indigo-500/10 bg-slate-900">
               <img
-                src="/profile.jpg"
+                src={withBasePath("/profile.jpg")}
                 alt={personal.name}
                 className="w-full h-full object-cover object-top"
               />

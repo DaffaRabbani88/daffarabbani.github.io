@@ -52,6 +52,20 @@ export interface LeadershipCard {
   bullets: string[];
 }
 
+const BASE_PATH = "/daffarabbani.github.io";
+
+export function withBasePath(path: string): string {
+  if (!path) return "";
+  if (/^(https?:\/\/|data:|blob:)/i.test(path)) return path;
+
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  if (normalized.startsWith(`${BASE_PATH}/`) || normalized === BASE_PATH) {
+    return normalized;
+  }
+
+  return `${BASE_PATH}${normalized}`;
+}
+
 export const portfolioData = {
   personal: {
     name: "Daffa Rabbani",
@@ -132,7 +146,7 @@ export const portfolioData = {
       description:
         "Peer-reviewed scientific article proposing a Dual-Decoder Autoencoder architecture to protect examinee facial privacy during automated online proctoring while enabling authorized identity restoration with optimal PSNR and SSIM balance.",
       tags: ["Deep Learning", "Computer Vision", "Dual-Decoder Autoencoder", "Privacy"],
-      image: "/publications/jtmei-proctoring.png",
+      image: withBasePath("/publications/jtmei-proctoring.png"),
       paperUrl: "https://ejurnal.politeknikpratama.ac.id/index.php/jtmei/article/view/6493",
     },
     {
@@ -143,7 +157,7 @@ export const portfolioData = {
       description:
         "Developed an automated natural language processing (NLP) classification model using Bidirectional LSTM (BiLSTM) to detect and verify halal status from food product ingredient lists.",
       tags: ["NLP", "BiLSTM", "Deep Learning", "Text Classification"],
-      image: "/publications/kjrt-halal-bilstm.png",
+      image: withBasePath("/publications/kjrt-halal-bilstm.png"),
       paperUrl: "https://journal.azkia.id/index.php/kjrt/article/view/17",
     },
     {
@@ -154,7 +168,7 @@ export const portfolioData = {
       description:
         "Documented the iterative Agile software development lifecycle, sprint planning, and system architecture behind a cross-platform mobile motorcycle rental application.",
       tags: ["Agile Methodology", "Software Engineering", "Flutter", "Mobile App"],
-      image: "/publications/preprints-motorcycle-rent.png",
+      image: withBasePath("/publications/preprints-motorcycle-rent.png"),
       paperUrl: "https://www.preprints.org/frontend/manuscript/33e276c6b20394960ead3a8267783275/download_pub",
     },
     {
@@ -165,7 +179,7 @@ export const portfolioData = {
       description:
         "Published Android mobile application for personal expense tracking, budget categorization, financial reporting, and data export on Google Play Store.",
       tags: ["Flutter", "Android", "Google Play Store", "Mobile App"],
-      image: "/publications/playstore-budget-tracker.png",
+      image: withBasePath("/publications/playstore-budget-tracker.png"),
       paperUrl: "https://play.google.com/store/apps/details?id=com.denisfirmansyah.budget_tracker&pcampaignid=web_share",
     },
   ] as Publication[],
